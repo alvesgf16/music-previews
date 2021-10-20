@@ -17,8 +17,8 @@ export default class AlbumCard extends Component {
           data-testid={ `link-to-album-${collectionId}` }
         >
           <img src={ artworkUrl100 } alt={ `${collectionName} cover` } />
-          <h5>{ collectionName }</h5>
-          <h6>{ artistName }</h6>
+          <h4>{ collectionName }</h4>
+          <p>{ artistName }</p>
         </Link>
       </div>
     );
