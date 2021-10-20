@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from '../components/Loading';
 
 export default class Album extends Component {
   constructor() {
@@ -10,36 +12,50 @@ export default class Album extends Component {
     this.state = {
       albumInfo: {},
       songsList: [],
+      loading: false,
+      favoriteSongs: [],
     };
 
     this.getSongsList = this.getSongsList.bind(this);
+    this.getFavorites = this.getFavorites.bind(this);
   }
 
   async componentDidMount() {
     const { match: { params: { id: album } } } = this.props;
-    this.getSongsList(album);
+    await this.getFavorites();
+    await this.getSongsList(album);
   }
 
   async getSongsList(album) {
     const response = await getMusics(album);
     const albumInfo = response.find((object) => !(object.trackId));
     const songsList = response.filter((object) => object.trackId);
-    console.log(albumInfo, songsList);
     this.setState({ albumInfo, songsList });
   }
 
+  async getFavorites() {
+    this.setState({ loading: true });
+    const favoriteSongs = await getFavoriteSongs();
+    this.setState({ loading: false, favoriteSongs });
+  }
+
   render() {
-    const { albumInfo, songsList } = this.state;
-    return (
+    const { albumInfo, songsList, loading, favoriteSongs } = this.state;
+    return (loading ? <Loading /> : (
       <div data-testid="page-album">
         <Header />
         <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
         <h3 data-testid="artist-name">{ albumInfo.artistName }</h3>
         { songsList.map((song) => (
-          <MusicCard key={ song.trackId } track={ song } />
+          <MusicCard
+            key={ song.trackId }
+            track={ song }
+            isFavorite={ favoriteSongs
+              .some((favSong) => favSong.trackId === song.trackId) }
+          />
         ))}
       </div>
-    );
+    ));
   }
 }
 

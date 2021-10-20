@@ -4,8 +4,8 @@ import { addSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class MusicCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isFavorite: false,
@@ -14,6 +14,11 @@ export default class MusicCard extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.addSongToFavorites = this.addSongToFavorites.bind(this);
+    this.checkFavorite = this.checkFavorite.bind(this);
+  }
+
+  componentDidMount() {
+    this.checkFavorite();
   }
 
   onInputChange({ target }) {
@@ -29,6 +34,11 @@ export default class MusicCard extends Component {
     this.setState({ loading: true });
     await addSong(track);
     this.setState({ loading: false });
+  }
+
+  checkFavorite() {
+    const { isFavorite } = this.props;
+    this.setState({ isFavorite });
   }
 
   render() {
@@ -67,4 +77,5 @@ MusicCard.propTypes = {
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
   }).isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
