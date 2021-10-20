@@ -13,7 +13,7 @@ export default class AlbumCard extends Component {
     return (
       <div>
         <Link
-          to={ `/album:${collectionId}` }
+          to={ `/album/${collectionId}` }
           data-testid={ `link-to-album-${collectionId}` }
         >
           <img src={ artworkUrl100 } alt={ `${collectionName} cover` } />

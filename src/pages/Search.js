@@ -74,14 +74,14 @@ export default class Search extends Component {
             </button>
           </div>
         ) }
-        { albums.length > 0 && (
+        { artist && (albums.length > 0 ? (
           <div>
             <h3>{`Resultado de álbuns de: ${artist}`}</h3>
             { albums.map((album) => (
               <AlbumCard key={ album.collectionId } album={ album } />
             ))}
           </div>
-        )}
+        ) : <h2>Nenhum álbum foi encontrado</h2>) }
       </div>
     );
   }
