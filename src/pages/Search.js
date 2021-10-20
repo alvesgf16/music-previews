@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 export default class Search extends Component {
   constructor() {
@@ -11,7 +12,7 @@ export default class Search extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enableSearchButton = this.enableSearchButton.bind(this);
-    // this.onSearchButtonClick = this.onSearchButtonClick.bind(this);
+    this.onSearchButtonClick = this.onSearchButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -20,12 +21,11 @@ export default class Search extends Component {
     this.enableSearchButton();
   }
 
-  // async onSearchButtonClick() {
-  //   const { artist } = this.state;
-  //   this.setState((prevState) => ({ loading: prevState.loading + 1 }));
-  //   await createUser({ name: artist });
-  //   this.setState((prevState) => ({ loading: prevState.loading + 1 }));
-  // }
+  async onSearchButtonClick() {
+    const { artist } = this.state;
+    const response = await searchAlbumsAPI(artist);
+    console.log(response);
+  }
 
   enableSearchButton() {
     this.setState(({ artist }) => {
@@ -51,9 +51,9 @@ export default class Search extends Component {
             type="button"
             data-testid="search-artist-button"
             disabled={ isSearchButtonDisabled }
-            // onClick={ this.onSaveButtonClick }
+            onClick={ this.onSearchButtonClick }
           >
-            Entrar
+            Pesquisar
           </button>
         </div>
       </div>
