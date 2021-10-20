@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { addSong } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 export default class MusicCard extends Component {
   constructor() {
@@ -7,21 +9,34 @@ export default class MusicCard extends Component {
 
     this.state = {
       isFavorite: false,
+      loading: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.addSongToFavorites = this.addSongToFavorites.bind(this);
   }
 
   onInputChange({ target }) {
     const { name, checked } = target;
-    this.setState({ [name]: checked });
+    this.setState({ [name]: checked }, () => {
+      const { isFavorite } = this.state;
+      if (isFavorite) this.addSongToFavorites();
+    });
+  }
+
+  async addSongToFavorites() {
+    const { track } = this.props;
+    this.setState({ loading: true });
+    await addSong(track);
+    this.setState({ loading: false });
   }
 
   render() {
     const { track } = this.props;
     const { trackId, trackName, previewUrl } = track;
-    const { isFavorite } = this.state;
-    return (
+    const { isFavorite, loading } = this.state;
+
+    return (loading ? <Loading /> : (
       <div>
         <span>{ trackName }</span>
         <audio data-testid="audio-component" src={ previewUrl } controls>
@@ -42,7 +57,7 @@ export default class MusicCard extends Component {
           />
         </label>
       </div>
-    );
+    ));
   }
 }
 
