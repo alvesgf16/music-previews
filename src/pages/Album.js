@@ -21,8 +21,10 @@ export default class Album extends Component {
   }
 
   async getSongsList(album) {
-    const songsList = await getMusics(album);
-    const albumInfo = songsList.shift();
+    const response = await getMusics(album);
+    const albumInfo = response.find((object) => !(object.trackId));
+    const songsList = response.filter((object) => object.trackId);
+    console.log(albumInfo, songsList);
     this.setState({ albumInfo, songsList });
   }
 
