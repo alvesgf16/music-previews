@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class MusicCard extends Component {
@@ -13,7 +13,7 @@ export default class MusicCard extends Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
-    this.addSongToFavorites = this.addSongToFavorites.bind(this);
+    this.manageSongInFavorites = this.manageSongInFavorites.bind(this);
     this.checkFavorite = this.checkFavorite.bind(this);
   }
 
@@ -24,15 +24,21 @@ export default class MusicCard extends Component {
   onInputChange({ target }) {
     const { name, checked } = target;
     this.setState({ [name]: checked }, () => {
-      const { isFavorite } = this.state;
-      if (isFavorite) this.addSongToFavorites();
+      this.manageSongInFavorites();
     });
   }
 
-  async addSongToFavorites() {
+  async manageSongInFavorites() {
     const { track } = this.props;
+    const { isFavorite } = this.state;
     this.setState({ loading: true });
-    await addSong(track);
+
+    if (isFavorite) {
+      await addSong(track);
+    } else {
+      await removeSong(track);
+    }
+
     this.setState({ loading: false });
   }
 
