@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
+import MusicCard from '../components/MusicCard';
 
 export default class Album extends Component {
   constructor() {
@@ -22,7 +23,6 @@ export default class Album extends Component {
   async getSongsList(album) {
     const songsList = await getMusics(album);
     const albumInfo = songsList.shift();
-    console.log(albumInfo, songsList);
     this.setState({ albumInfo, songsList });
   }
 
@@ -33,6 +33,9 @@ export default class Album extends Component {
         <Header />
         <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
         <h3 data-testid="artist-name">{ albumInfo.artistName }</h3>
+        { songsList.map((song) => (
+          <MusicCard key={ song.trackId } track={ song } />
+        ))}
       </div>
     );
   }
