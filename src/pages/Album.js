@@ -39,7 +39,7 @@ export default class Album extends Component {
     this.setState({ albumInfo, songsList }); // Por fim, o primeiro elemento e a lista de músicas foram salvos em chaves diferentes do estado.
   }
 
-  // 9. e 10. Faça a requisição para r e atualizar a lista após favoritar uma músicaecuperar as músicas favoritas ao entrar na página do Álbum
+  // 9. e 10. Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum e atualizar a lista após favoritar uma música
   async getFavorites() {
     // Enquanto aguarda a resposta da API, exiba a mensagem Carregando...
     this.setState({ loading: true });
