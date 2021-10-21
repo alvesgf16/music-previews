@@ -1,9 +1,11 @@
+// 1. Crie as rotas necessárias para a aplicação - Crie cada componente dentro da pasta src/pages
 import React, { Component } from 'react';
 import Header from '../components/Header';
 
 export default class Favorites extends Component {
   render() {
     return (
+      // 1. Crie as rotas necessárias para a aplicação - a rota /favorites deve renderizar um componente chamado Favorites. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-favorites"
       <div data-testid="page-favorites">
         <Header />
       </div>

@@ -1,3 +1,4 @@
+// 1. Crie as rotas necessárias para a aplicação - Crie cada componente dentro da pasta src/pages
 import React, { Component } from 'react';
 import AlbumCard from '../components/AlbumCard';
 import Header from '../components/Header';
@@ -53,6 +54,7 @@ export default class Search extends Component {
     const { input, isSearchButtonDisabled, loading, albums, artist } = this.state;
 
     return (
+      // 1. Crie as rotas necessárias para a aplicação - a rota /search deve renderizar um componente chamado Search. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-search"
       <div data-testid="page-search">
         <Header />
         { loading ? <Loading /> : (

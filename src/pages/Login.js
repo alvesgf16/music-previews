@@ -1,3 +1,4 @@
+// 1. Crie as rotas necessárias para a aplicação - Crie cada componente dentro da pasta src/pages
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Loading from '../components/Loading';
@@ -48,6 +49,7 @@ export default class Login extends Component {
     }
 
     return (
+      // 1. Crie as rotas necessárias para a aplicação - a rota / deve renderizar um componente chamado Login. Este componente deve ter uma div com o atributo data-testid="page-login" que envolva todo seu conteúdo
       <div data-testid="page-login">
         <input
           name="login"

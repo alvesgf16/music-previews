@@ -1,3 +1,4 @@
+// 1. Crie as rotas necessárias para a aplicação - Crie cada componente dentro da pasta src/pages
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
@@ -42,6 +43,7 @@ export default class Album extends Component {
   render() {
     const { albumInfo, songsList, loading, favoriteSongs } = this.state;
     return (loading ? <Loading /> : (
+      // 1. Crie as rotas necessárias para a aplicação - a rota /album/:id deve renderizar um componente chamado Album. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-album"
       <div data-testid="page-album">
         <Header />
         <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
