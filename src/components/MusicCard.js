@@ -33,7 +33,10 @@ export default class MusicCard extends Component {
 
   // 8. e 11. Crie o mecanismo para adicionar/remover músicas na lista de músicas favoritas
   async manageSongInFavorites() {
-    const { track, getFavorites } = this.props; // Propriedade que guarda o objeto da faixa, obtido da lista retornada por getMusics
+    const {
+      track, // Propriedade que guarda o objeto da faixa, obtido da lista retornada por getMusics
+      getFavorites, // Propriedade que permite atualização instantânea da lista de favoritos
+    } = this.props;
     const { isFavorite } = this.state;
     // Enquanto aguarda o retorno da função addSong/removeSong, renderize a mensagem de Carregando...
     this.setState({ loading: true });
@@ -46,6 +49,7 @@ export default class MusicCard extends Component {
       await removeSong(track);
     }
 
+    // 12. Crie a lista de músicas favoritas - Após remover a música, atualize a lista
     await getFavorites();
 
     this.setState({ loading: false });

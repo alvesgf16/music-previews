@@ -26,7 +26,7 @@ export default class Favorites extends Component {
   async getFavorites() {
     // Enquanto aguarda a resposta da API, exiba a mensagem Carregando...
     this.setState({ loading: true });
-    // Utilize a função getFavoriteSongs da favoriteSongsAPI para recuperar a lista de músicas favoritas.
+    // Utilize a função getFavoriteSongs da favoriteSongsAPI para recuperar a lista de músicas favoritas E para atualizar a lista após remover uma música
     const favoriteSongs = await getFavoriteSongs();
     // Após receber o retorno da função getFavoriteSongs, a lista recebida pela função getFavoriteSongs deve ser salva no estado da sua aplicação
     this.setState({ loading: false, favoriteSongs });
