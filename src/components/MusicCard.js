@@ -33,7 +33,7 @@ export default class MusicCard extends Component {
 
   // 8. e 11. Crie o mecanismo para adicionar/remover músicas na lista de músicas favoritas
   async manageSongInFavorites() {
-    const { track } = this.props; // Propriedade que guarda o objeto da faixa, obtido da lista retornada por getMusics
+    const { track, getFavorites } = this.props; // Propriedade que guarda o objeto da faixa, obtido da lista retornada por getMusics
     const { isFavorite } = this.state;
     // Enquanto aguarda o retorno da função addSong/removeSong, renderize a mensagem de Carregando...
     this.setState({ loading: true });
@@ -45,6 +45,8 @@ export default class MusicCard extends Component {
       // Ao clicar em uma música que já está marcada como favorita, ela deve ser removida da lista de músicas favoritas. Para isso você deve usar a função removeSong da favoriteSongsAPI. Essa API espera receber um objeto no mesmo formato que foi passado anteriormente para a função addSong
       await removeSong(track);
     }
+
+    await getFavorites();
 
     this.setState({ loading: false });
   }
@@ -100,4 +102,9 @@ MusicCard.propTypes = {
     previewUrl: PropTypes.string,
   }).isRequired,
   isFavorite: PropTypes.bool.isRequired,
+  getFavorites: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  getFavorites: () => {},
 };

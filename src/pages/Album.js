@@ -57,7 +57,7 @@ export default class Album extends Component {
       favoriteSongs, // chave que guarda a lista de músicas favoritas
     } = this.state;
 
-    // 9. e 10. Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum e atualizar a lista após favoritar uma música - Estado inicial antes da requisição (loading = true): o compomente <Loading /> é mostrado
+    // 9. e 10. Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum e atualizar a lista após favoritar uma música - Estado inicial antes da requisição (loading = true): o componente <Loading /> é mostrado
     return (loading ? <Loading /> : (
       // 1. Crie as rotas necessárias para a aplicação - a rota /album/:id deve renderizar um componente chamado Album. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-album"
       <div data-testid="page-album">
