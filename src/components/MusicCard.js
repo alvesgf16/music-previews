@@ -18,6 +18,7 @@ export default class MusicCard extends Component {
     this.checkFavorite = this.checkFavorite.bind(this);
   }
 
+  // Inicialmente, todas as músicas começam desmarcadas, mas, logo na montagem, há uma verificação da propriedade isFavorite (ver componente Album)
   componentDidMount() {
     this.checkFavorite();
   }
@@ -48,6 +49,7 @@ export default class MusicCard extends Component {
     this.setState({ loading: false });
   }
 
+  // Função que verifica o valor da propriedade isFavorite (ver componente Album) e o atualiza
   checkFavorite() {
     const { isFavorite } = this.props;
     this.setState({ isFavorite });

@@ -76,7 +76,7 @@ export default class Search extends Component {
         { loading ? <Loading /> : (
           // Estado inicial (loading = false, artist = false (string vazia), album.length = 0): o conteúdo normal é mostrado
           // 5. Crie o formulário para pesquisar artistas - Este formulário deve conter um input e um botão para que seja possível pesquisar os álbuns de uma banda ou artista.
-          <form>
+          <div>
             {/* Crie um campo para pessoa digitar o nome da banda ou artista a ser pesquisada. Esse campo deve ter o atributo data-testid="search-artist-input" */}
             <input
               name="input"
@@ -96,7 +96,7 @@ export default class Search extends Component {
             >
               Pesquisar
             </button>
-          </form>
+          </div>
         ) }
         {/* 6. Faça a requisição para pesquisar artistas - Estado final possível 1 em que o artista foi encontrado e possui álbuns para serem mostrados (loading = false, artist = true (valor obtido), albums.length > 0): exibe texto e álbuns */}
         { artist
