@@ -7,6 +7,7 @@ export default class Favorites extends Component {
     return (
       // 1. Crie as rotas necessárias para a aplicação - a rota /favorites deve renderizar um componente chamado Favorites. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-favorites"
       <div data-testid="page-favorites">
+        {/* 3. Crie um componente de cabeçalho - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
         <Header />
       </div>
     );

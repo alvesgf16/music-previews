@@ -56,6 +56,7 @@ export default class Search extends Component {
     return (
       // 1. Crie as rotas necessárias para a aplicação - a rota /search deve renderizar um componente chamado Search. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-search"
       <div data-testid="page-search">
+        {/* 3. Crie um componente de cabeçalho - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
         <Header />
         { loading ? <Loading /> : (
           <div>

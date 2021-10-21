@@ -7,6 +7,7 @@ export default class Profile extends Component {
     return (
       // 1. Crie as rotas necessárias para a aplicação - a rota /profile deve renderizar um componente chamado Profile. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-profile"
       <div data-testid="page-profile">
+        {/* 3. Crie um componente de cabeçalho - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
         <Header />
       </div>
     );

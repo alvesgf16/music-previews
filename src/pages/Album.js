@@ -45,6 +45,7 @@ export default class Album extends Component {
     return (loading ? <Loading /> : (
       // 1. Crie as rotas necessárias para a aplicação - a rota /album/:id deve renderizar um componente chamado Album. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-album"
       <div data-testid="page-album">
+        {/* 3. Crie um componente de cabeçalho - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
         <Header />
         <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
         <h3 data-testid="artist-name">{ albumInfo.artistName }</h3>
