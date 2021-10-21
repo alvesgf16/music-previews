@@ -36,7 +36,7 @@ export default class Login extends Component {
     this.setState((prevState) => ({ loading: prevState.loading + 1 }));
   }
 
-  // 2. Crie um formulário para identificação - Função que controla se o botão de Entrar está habilitado
+  // Função que controla se o botão de Entrar está habilitado
   enableSaveButton() {
     this.setState(({ login }) => { // Recupera o valor do login do estado, controlado pela função onInputChange
       const minInputLength = 3;
@@ -45,7 +45,8 @@ export default class Login extends Component {
   }
 
   render() {
-    const { login, // chave que guarda o que é digitado no input
+    const {
+      login, // chave que guarda o que é digitado no input
       isSaveButtonDisabled, // chave que controla se o botão está (des)habilitado, controlada pela função enableSaveButton
       loading, // chave que controla a lógica de aparição do componente carregando
     } = this.state;
@@ -80,7 +81,7 @@ export default class Login extends Component {
             data-testid="login-submit-button"
             // O botão para entrar só deve ser habilitado caso o nome digitado tenha 3 caracteres ou mais (crie um estado para controlar isso).
             disabled={ isSaveButtonDisabled }
-            // Ao clicar no botão Entrar (...) => seguir para onSaveClick
+            // Ao clicar no botão Entrar (...) => seguir para onSaveButtonClick
             onClick={ this.onSaveButtonClick }
           >
             Entrar
