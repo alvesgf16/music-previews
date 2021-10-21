@@ -18,8 +18,8 @@ export default class Header extends Component {
   async componentDidMount() {
     // Utilize a função getUser da userAPI para recuperar o nome da pessoa logada (...)
     const user = await getUser(); // A função getUser retorna o objeto user
-    const username = user.name; // Obtém a o valor da chave name guardada ao clicar no botão Entrar do Login
-    this.changeUsername(username); // E salva esse valor no estado para poder utilizá-lo
+    const username = user.name; // Obtenha o valor da chave name guardada ao clicar no botão Entrar do Login
+    this.changeUsername(username); // E salve esse valor no estado para poder utilizá-lo
   }
 
   // Função que salva o username no estado, pois não é possível fazer isso corretamente direto do componentDidMount

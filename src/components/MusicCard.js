@@ -1,3 +1,4 @@
+// 7. Crie a lista de músicas do álbum selecionado - crie um componente chamado MusicCard
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
@@ -54,13 +55,16 @@ export default class MusicCard extends Component {
 
     return (loading ? <Loading /> : (
       <div>
+        {/* 7. Crie a lista de músicas do álbum selecionado - o componente MusicCard deverá exibir o nome da música (propriedade trackName no objeto recebido pela API)... */}
         <span>{ trackName }</span>
+        {/* ... e um player para tocar o preview da música (propriedade previewUrl no objeto recebido pela API). Para tocar o preview, você deve usar a tag audio do próprio HTML. Sua implementação é assim: */}
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento
           <code>audio</code>
           .
         </audio>
+        {/* Importante: lembre-se de colocar o atributo data-testid="audio-component" na tag audio de cada música listada. */}
         <label htmlFor={ `checkbox-music-${trackId}` }>
           Favorita
           <input

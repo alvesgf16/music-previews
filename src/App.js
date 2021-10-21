@@ -13,8 +13,8 @@ class App extends React.Component {
     return (
       // 1. Crie as rotas necessárias para a aplicação - Você deve utilizar o BrowserRouter pra criar as rotas da sua aplicação e cada rota deverá renderizar um componente específico.
       <BrowserRouter>
-        {/* O <Switch> procura de cima para baixo pelo primeiro entre seus elementos filhos <Route> cujo caminho (path) corresponda a uma substring da URL atual e ignora todos os outros. Isso significa que você deve colocar <Route>s com caminhos mais específicos antes de outros mais genéricos * Fonte: https://reactrouter.com/web/guides/primary-components */}
-        {/* Por isso o "/" foi para o final, antes apenas de "*", que por ser um curinga é ainda mais genérico, e "/profile/edit" está antes de "/profile" */}
+        {/* O <Switch> procura de cima para baixo pelo primeiro entre seus elementos filhos <Route> cujo caminho (path) corresponda a uma substring do começo da URL atual e ignora todos os outros. Isso significa que você deve colocar <Route>s com caminhos mais específicos antes de outros mais genéricos * Fonte: https://reactrouter.com/web/guides/primary-components */}
+        {/* Por isso o "/" foi para o final, antes apenas de "*", que por ser um curinga é ainda mais genérico, e "/profile/edit" está antes de "/profile". Além disso, o exact foi usado na rota "/" para permitir o funcionamento da rota "*" */}
         <Switch>
           {/* a rota (path) /search deve renderizar um componente chamado Search */}
           <Route path="/search" component={ Search } />

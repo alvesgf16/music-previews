@@ -48,7 +48,7 @@ export default class Login extends Component {
     const {
       login, // chave que guarda o que é digitado no input
       isSaveButtonDisabled, // chave que controla se o botão está (des)habilitado, controlada pela função enableSaveButton
-      loading, // chave que controla a lógica de aparição do componente carregando
+      loading, // chave que controla a lógica de aparição do componente Loading
     } = this.state;
 
     // Estado final após a requisição à API (loading = 1 + 1): redirecionamento para a rota /search

@@ -62,7 +62,7 @@ export default class Search extends Component {
     const {
       input, // chave que guarda o que é digitado no input
       isSearchButtonDisabled, // chave que controla se o botão está (des)habilitado, controlada pela função enableSearchButton
-      loading, // chave que controla a lógica de aparição do componente carregando
+      loading, // chave que controla a lógica de aparição do componente Loading
       albums, // chave que guarda a lista de álbuns obtida após a requisição
       artist, // chave que guarda o valor a ser pesquisado ao se clicar no botão para permitir que o input seja limpo
     } = this.state;
