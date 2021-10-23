@@ -7,23 +7,26 @@ import Loading from './Loading';
 export default class Header extends Component {
   constructor() {
     super();
+
     this.state = {
       username: '',
     };
 
-    this.changeUsername = this.changeUsername.bind(this);
+    this.getUsername = this.getUsername.bind(this);
   }
 
   // Se você precisar carregar (recuperar) dados de um endpoint remoto (ou de um componente que simule isso ;)) (imediatamente após um componente ser montado), {componentDidMount()} é um bom lugar para instanciar (fazer) sua requisição * Fonte: https://pt-br.reactjs.org/docs/react-component.html#componentdidmount
   async componentDidMount() {
-    // Utilize a função getUser da userAPI para recuperar o nome da pessoa logada (...)
-    const user = await getUser(); // A função getUser retorna o objeto user
-    const username = user.name; // Obtenha o valor da chave name guardada ao clicar no botão Entrar do Login
-    this.changeUsername(username); // E salve esse valor no estado para poder utilizá-lo
+    // 3. - Recupere o nome da pessoa logada
+    this.getUsername();
   }
 
   // Função que salva o username no estado, pois não é possível fazer isso corretamente direto do componentDidMount
-  changeUsername(username) {
+  async getUsername() {
+    // Utilize a função getUser da userAPI para recuperar as informações da pessoa logada
+    const user = await getUser(); // A função getUser retorna o objeto user
+    const username = user.name; // Obtenha o valor da chave name guardada ao clicar no botão Entrar do Login
+    // Salve esse valor no estado para poder utilizá-lo
     this.setState({ username });
   }
 
@@ -37,7 +40,7 @@ export default class Header extends Component {
     // Estado final após a requisição à API (username com valor obtido): mostra o conteúdo normal
       // Crie o componente de cabeçalho com a tag header envolvendo todo seu conteúdo e com o atributo data-testid="header-component"
       <header data-testid="header-component">
-        {/* (...) Exiba { o nome da pessoa logada } na tela. Você pode usar qualquer tag HTML que faça sentido, desde que ela tenha o atributo data-testid="header-user-name" */}
+        {/* Exiba o nome da pessoa logada na tela. Você pode usar qualquer tag HTML que faça sentido, desde que ela tenha o atributo data-testid="header-user-name" */}
         <p data-testid="header-user-name">{ username }</p>
         {/* 4. Crie os links de navegação no cabeçalho */}
         {/* Crie o link que redireciona para a página de pesquisa dentro do componente Header. Este link deve ter o atributo data-testid="link-to-search" */}

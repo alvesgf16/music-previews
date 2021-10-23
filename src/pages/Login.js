@@ -10,7 +10,8 @@ export default class Login extends Component {
     this.state = {
       login: '',
       isSaveButtonDisabled: true,
-      loading: 0,
+      loading: false,
+      redirect: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -29,11 +30,11 @@ export default class Login extends Component {
   async onSaveButtonClick() {
     const { login } = this.state;
     // Enquanto a informação da pessoa usuária é salva, uma mensagem com o texto Carregando... deve aparecer na tela. (mais explicações no render)
-    this.setState((prevState) => ({ loading: prevState.loading + 1 }));
+    this.setState((prevState) => ({ loading: true }));
     // (...) utilize a função createUser da userAPI para salvar o nome digitado.
     await createUser({ name: login }); // A função createUser espera receber como argumento um objeto com as informações da pessoa (que, por enquanto, restringem-se ao login digitado no input)
     // Após a informação ter sido salva, faça um redirect para a rota /search (mais explicações no render)
-    this.setState((prevState) => ({ loading: prevState.loading + 1 }));
+    this.setState({ loading: false, redirect: true });
   }
 
   // Função que controla se o botão de Entrar está habilitado
@@ -49,20 +50,15 @@ export default class Login extends Component {
       login, // chave que guarda o que é digitado no input
       isSaveButtonDisabled, // chave que controla se o botão está (des)habilitado, controlada pela função enableSaveButton
       loading, // chave que controla a lógica de aparição do componente Loading
+      redirect, // chave que controla a lógica de aparição do componente Redirect
     } = this.state;
 
-    // Estado final após a requisição à API (loading = 1 + 1): redirecionamento para a rota /search
-    if (loading === 2) {
-      return (<Redirect to="/search" />);
-    }
+    // Estado final após a requisição à API (loading = false, redirect = true): redirecionamento para a rota /search
+    if (redirect) return <Redirect to="/search" />;
 
-    // Estado intermediário entre o clicar do botão e a requisição à API (loading = 0 + 1): o compomente <Loading /> é mostrado
-    if (loading === 1) {
-      return (<Loading />);
-    }
-
-    // Estado inicial (loading = 0): o conteúdo normal é mostrado
-    return (
+    // Estado intermediário entre o clicar do botão e a requisição à API (loading = true, redirect = false): o componente <Loading /> é mostrado
+    return (loading ? <Loading /> : (
+      // Estado inicial (loading = false, redirect = false): o conteúdo normal é mostrado
       // 1. - a rota / deve renderizar um componente chamado Login. Este componente deve ter uma div com o atributo data-testid="page-login" que envolva todo seu conteúdo
       <div data-testid="page-login">
         {/* 2. - Dentro do componente Login, que é renderizado na rota /, crie um formulário para que a pessoa usuária se identifique com um nome. */}
@@ -88,6 +84,6 @@ export default class Login extends Component {
           </button>
         </form>
       </div>
-    );
+    ));
   }
 }
