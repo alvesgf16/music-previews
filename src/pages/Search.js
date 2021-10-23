@@ -1,11 +1,11 @@
-// 1. Crie as rotas necessárias para a aplicação - Crie cada componente dentro da pasta src/pages
+// 1. - Crie cada componente dentro da pasta src/pages
 import React, { Component } from 'react';
 import AlbumCard from '../components/AlbumCard';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
-// 5. Crie o formulário para pesquisar artistas - Crie o formulário dentro do componente Search, que é renderizado na rota /search
+// 5. - Crie o formulário dentro do componente Search, que é renderizado na rota /search
 export default class Search extends Component {
   constructor() {
     super();
@@ -30,7 +30,7 @@ export default class Search extends Component {
     this.enableSearchButton();
   }
 
-  // 6. Faça a requisição para pesquisar artistas - Função ativada ao clicar no botão Pesquisar
+  // 6. - Função ativada ao clicar no botão Pesquisar
   onSearchButtonClick() {
     const { input } = this.state; // Recupera o valor do input do estado...
     this.setState({ artist: input }, () => { // ... e salva ele em outra chave do estado...
@@ -50,7 +50,7 @@ export default class Search extends Component {
     this.setState({ loading: false, albums: response });
   }
 
-  // Função que controla se o botão de Pesquisar está habilitado
+  // 5. - Função que controla se o botão de Pesquisar está habilitado
   enableSearchButton() {
     this.setState(({ input }) => { // Recupera o valor do input do estado, controlado pela função onInputChange
       const minInputLength = 2;
@@ -68,14 +68,14 @@ export default class Search extends Component {
     } = this.state;
 
     return (
-      // 1. Crie as rotas necessárias para a aplicação - a rota /search deve renderizar um componente chamado Search. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-search"
+      // 1. - a rota /search deve renderizar um componente chamado Search. Este componente deve ter uma div que envolva todo seu conteúdo e ter o atributo data-testid="page-search"
       <div data-testid="page-search">
-        {/* 3. Crie um componente de cabeçalho - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
+        {/* 3. - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
         <Header />
-        {/* 6. Faça a requisição para pesquisar artistas - Estado intermediário entre o clicar do botão e a requisição à API (loading = true, artist = true (valor obtido), albums.length = 0): o compomente <Loading /> é mostrado */}
+        {/* 6. - Estado intermediário entre o clicar do botão e a requisição à API (loading = true, artist = true (valor obtido), albums.length = 0): o compomente <Loading /> é mostrado */}
         { loading ? <Loading /> : (
           // Estado inicial (loading = false, artist = false (string vazia), album.length = 0): o conteúdo normal é mostrado
-          // 5. Crie o formulário para pesquisar artistas - Este formulário deve conter um input e um botão para que seja possível pesquisar os álbuns de uma banda ou artista.
+          // 5. - Este formulário deve conter um input e um botão para que seja possível pesquisar os álbuns de uma banda ou artista.
           <div>
             {/* Crie um campo para pessoa digitar o nome da banda ou artista a ser pesquisada. Esse campo deve ter o atributo data-testid="search-artist-input" */}
             <input
@@ -91,14 +91,14 @@ export default class Search extends Component {
               data-testid="search-artist-button"
               // O botão só deve estar habilitado caso o nome do artista tenha 2 ou mais caracteres (crie um estado para controlar isso).
               disabled={ isSearchButtonDisabled }
-              // 6. Faça a requisição para pesquisar artistas - Ao clicar no botão de Pesquisar (...) => seguir para onSearchButtonClick
+              // 6. - Ao clicar no botão de Pesquisar (...) => seguir para onSearchButtonClick
               onClick={ this.onSearchButtonClick }
             >
               Pesquisar
             </button>
           </div>
         ) }
-        {/* 6. Faça a requisição para pesquisar artistas - Estado final possível 1 em que o artista foi encontrado e possui álbuns para serem mostrados (loading = false, artist = true (valor obtido), albums.length > 0): exibe texto e álbuns */}
+        {/* Estado final possível 1 em que o artista foi encontrado e possui álbuns para serem mostrados (loading = false, artist = true (valor obtido), albums.length > 0): exibe texto e álbuns */}
         { artist
           && (albums.length > 0 ? (
             <div>

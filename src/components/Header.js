@@ -1,4 +1,4 @@
-// 3. Crie um componente de cabeçalho - Crie um componente chamado Header, dentro da pasta src/components
+// 3. - Crie um componente chamado Header, dentro da pasta src/components
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
@@ -30,12 +30,12 @@ export default class Header extends Component {
   render() {
     const { username } = this.state;
 
-    // 3. Crie um componente de cabeçalho - Enquanto estiver aguardando a resposta da getUser, exiba apenas a mensagem de Carregando...
+    // 3. - Enquanto estiver aguardando a resposta da getUser, exiba apenas a mensagem de Carregando...
     // Estado inicial antes da requisição à API (username indefinido - string vazia): mostra o componente <Loading />
     return (!username ? <Loading /> : (
 
     // Estado final após a requisição à API (username com valor obtido): mostra o conteúdo normal
-      // 3. Crie um componente de cabeçalho - Crie esse componente com a tag header envolvendo todo seu conteúdo e com o atributo data-testid="header-component"
+      // Crie o componente de cabeçalho com a tag header envolvendo todo seu conteúdo e com o atributo data-testid="header-component"
       <header data-testid="header-component">
         {/* (...) Exiba { o nome da pessoa logada } na tela. Você pode usar qualquer tag HTML que faça sentido, desde que ela tenha o atributo data-testid="header-user-name" */}
         <p data-testid="header-user-name">{ username }</p>

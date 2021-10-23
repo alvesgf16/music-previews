@@ -1,4 +1,4 @@
-// 1. Crie as rotas necessárias para a aplicação - Crie cada componente dentro da pasta src/pages
+// 1. - Crie cada componente dentro da pasta src/pages
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Loading from '../components/Loading';
@@ -25,7 +25,7 @@ export default class Login extends Component {
     this.enableSaveButton();
   }
 
-  // 2. Crie um formulário para identificação - Função ativada ao clicar no botão Entrar
+  // 2. - Função ativada ao clicar no botão Entrar
   async onSaveButtonClick() {
     const { login } = this.state;
     // Enquanto a informação da pessoa usuária é salva, uma mensagem com o texto Carregando... deve aparecer na tela. (mais explicações no render)
@@ -63,9 +63,9 @@ export default class Login extends Component {
 
     // Estado inicial (loading = 0): o conteúdo normal é mostrado
     return (
-      // 1. Crie as rotas necessárias para a aplicação - a rota / deve renderizar um componente chamado Login. Este componente deve ter uma div com o atributo data-testid="page-login" que envolva todo seu conteúdo
+      // 1. - a rota / deve renderizar um componente chamado Login. Este componente deve ter uma div com o atributo data-testid="page-login" que envolva todo seu conteúdo
       <div data-testid="page-login">
-        {/* 2. Crie um formulário para identificação - Dentro do componente Login, que é renderizado na rota /, crie um formulário para que a pessoa usuária se identifique com um nome. */}
+        {/* 2. - Dentro do componente Login, que é renderizado na rota /, crie um formulário para que a pessoa usuária se identifique com um nome. */}
         <form>
           {/* Você deve criar um campo para que a pessoa usuária insira seu nome. Este campo deverá ter o atributo data-testid="login-name-input" */}
           <input

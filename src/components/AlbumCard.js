@@ -1,4 +1,4 @@
-// 6. Faça a requisição para pesquisar artistas - Liste os álbuns retornados. A API irá retorna um array de objetos.
+// 6. - Liste os álbuns retornados. A API irá retorna um array de objetos.
 // Crie um componente para poder definir como os objetos retornados serão exibidos
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
