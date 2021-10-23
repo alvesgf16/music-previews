@@ -30,7 +30,7 @@ export default class Login extends Component {
   async onSaveButtonClick() {
     const { login } = this.state;
     // Enquanto a informação da pessoa usuária é salva, uma mensagem com o texto Carregando... deve aparecer na tela. (mais explicações no render)
-    this.setState((prevState) => ({ loading: true }));
+    this.setState({ loading: true });
     // (...) utilize a função createUser da userAPI para salvar o nome digitado.
     await createUser({ name: login }); // A função createUser espera receber como argumento um objeto com as informações da pessoa (que, por enquanto, restringem-se ao login digitado no input)
     // Após a informação ter sido salva, faça um redirect para a rota /search (mais explicações no render)
