@@ -67,7 +67,7 @@ export default class Profile extends Component {
                 type="button"
                 onClick={ this.onEditButtonClick }
               >
-                Editar Perfil
+                Editar perfil
               </button>
               <h4>Nome</h4>
               <p>{ name }</p>
