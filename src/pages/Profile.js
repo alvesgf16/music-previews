@@ -1,6 +1,6 @@
 // 1. - Crie cada componente dentro da pasta src/pages
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from '../components/Loading';
@@ -13,7 +13,6 @@ export default class Profile extends Component {
     this.state = {
       user: {},
       loading: false,
-      redirect: false,
     };
 
     this.getUserInfo = this.getUserInfo.bind(this);
@@ -28,7 +27,8 @@ export default class Profile extends Component {
 
   // Crie um link que redirecione para a página de edição de perfil (rota /profile/edit). Este link deve ter o texto Editar perfil
   onEditButtonClick() {
-    this.setState({ redirect: true });
+    const { history } = this.props;
+    history.push('/profile/edit');
   }
 
   // Função que salva o user no estado, pois não é possível fazer isso corretamente direto do componentDidMount
@@ -45,7 +45,6 @@ export default class Profile extends Component {
     const {
       user: { name, email, image, description }, // Propriedades do objeto recebido pela API
       loading, // chave que controla a lógica de aparição do componente Loading
-      redirect, // chave que controla a lógica de aparição do componente Redirect
     } = this.state;
 
     return (
@@ -54,31 +53,32 @@ export default class Profile extends Component {
         {/* 3. - Renderize o componente de cabeçalho nas páginas das rotas /search, /album/:id, /favorites, /profile e /profile/edit */}
         <Header />
         {/* 13. - Estado inicial antes da requisição à API (user com chaves vazias): mostra o componente Loading */}
-        { (() => {
-          // Estado final após o clique no botão de Editar Perfil (loading = false, redirect = true): redirecionamento para a rota /profile/edit
-          if (redirect) return <Redirect to="/profile/edit" />;
-
-          return (loading ? <Loading /> : (
-            // Após receber o retorno da getUser, exiba o nome, o email, a descrição e a imagem da pessoa logada.
-            <main>
-              {/* Para exibir a imagem, use a tag HTML img com o atributo data-testid="profile-image" */}
-              <img src={ image } data-testid="profile-image" alt="Imagem do perfil" />
-              <button
-                type="button"
-                onClick={ this.onEditButtonClick }
-              >
-                Editar perfil
-              </button>
-              <h4>Nome</h4>
-              <p>{ name }</p>
-              <h4>E-mail</h4>
-              <p>{ email }</p>
-              <h4>Descrição</h4>
-              <p>{ description }</p>
-            </main>
-          ));
-        })() }
+        { (() => (loading ? <Loading /> : (
+        // Após receber o retorno da getUser, exiba o nome, o email, a descrição e a imagem da pessoa logada.
+          <main>
+            {/* Para exibir a imagem, use a tag HTML img com o atributo data-testid="profile-image" */}
+            <img src={ image } data-testid="profile-image" alt="Imagem do perfil" />
+            <button
+              type="button"
+              onClick={ this.onEditButtonClick }
+            >
+              Editar perfil
+            </button>
+            <h4>Nome</h4>
+            <p>{ name }</p>
+            <h4>E-mail</h4>
+            <p>{ email }</p>
+            <h4>Descrição</h4>
+            <p>{ description }</p>
+          </main>
+        )))() }
       </div>
     );
   }
 }
+
+Profile.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
