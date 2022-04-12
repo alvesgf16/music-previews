@@ -1,5 +1,27 @@
+:root {
+  --laranja-claro: rgb(249, 158, 26);
+  --laranja-escuro: rgb(252, 76, 2);
+  --amarelo-escuro: rgb(202, 182, 76);
+  --verde-claro: rgb(151, 215, 0);
+  --verde-escuro: rgb(47, 178, 40);
+  --azul-claro: rgb(33, 143, 254);
+  --azul-escuro: rgb(9, 34, 107);
+  --cinza-claro: rgb(220, 220, 220);
+  --cinza1: rgb(117, 120, 123);
+  --cinza2: rgb(64, 82, 117);
+  --cinza3: rgb(67, 72, 76);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
+  background-color: var(--cinza3);
+  color: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,7 +35,7 @@ code {
 }
 
 .loading {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
