@@ -28,7 +28,7 @@ export default class Login extends Component {
     const { history } = this.props;
     this.setState({ loading: true });
     await createUser({ name: login });
-    history.push('/search');
+    history.push('/');
   }
 
   enableSaveButton() {
