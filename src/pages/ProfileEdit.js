@@ -25,6 +25,7 @@ export default class ProfileEdit extends Component {
   async componentDidMount() {
     // 13. - Recupere as informações da pessoa logada
     await this.getUserInfo();
+    this.enableSaveButton();
   }
 
   // Event handler genérico sem checkbox * Fonte: https://pt-br.reactjs.org/docs/forms.html - seção Manipulando Múltiplos Inputs
