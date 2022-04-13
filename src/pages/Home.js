@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 
-export default class Index extends Component {
+export default class Home extends Component {
   async componentDidMount() {
     const { history } = this.props;
 
@@ -18,7 +18,7 @@ export default class Index extends Component {
   }
 }
 
-Index.propTypes = {
+Home.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
