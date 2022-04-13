@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
-import MusicCard from '../components/MusicCard';
+import TrackCard from '../components/TrackCard';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class Favorites extends Component {
@@ -58,7 +58,7 @@ export default class Favorites extends Component {
         <Header />
         { loading ? <Loading /> : (
           favoriteSongs.map((song) => (
-            <MusicCard
+            <TrackCard
               key={ song.trackId }
               track={ song }
               isFavorite={ favoriteSongs

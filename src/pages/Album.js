@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import Loading from '../components/Loading';
-import MusicCard from '../components/MusicCard';
+import TrackCard from '../components/TrackCard';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
@@ -80,7 +80,7 @@ export default class Album extends Component {
             <h2>{ albumInfo.collectionName }</h2>
             <h3>{ albumInfo.artistName }</h3>
             { songsList.map((song) => (
-              <MusicCard
+              <TrackCard
                 key={ song.trackId }
                 track={ song }
                 onInputChange={ (event) => this.onInputChange(event, song) }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class MusicCard extends Component {
+export default class TrackCard extends Component {
   constructor(props) {
     super(props);
 
@@ -54,7 +54,7 @@ export default class MusicCard extends Component {
   }
 }
 
-MusicCard.propTypes = {
+TrackCard.propTypes = {
   track: PropTypes.shape({
     trackId: PropTypes.string,
     trackName: PropTypes.string,
