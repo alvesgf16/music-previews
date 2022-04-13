@@ -8,7 +8,7 @@ export default class Index extends Component {
     const { history } = this.props;
 
     const user = await getUser();
-    if (!user) history.push('/login');
+    if (user === {}) history.push('/login');
   }
 
   render() {
