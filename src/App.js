@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Album from './pages/Album';
 import Favorites from './pages/Favorites';
-import Index from './pages/Index';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
@@ -20,7 +20,7 @@ class App extends React.Component {
           <Route path="/profile/edit" component={ ProfileEdit } />
           <Route path="/profile" component={ Profile } />
           <Route path="/login" component={ Login } />
-          <Route exact path="/" component={ Index } />
+          <Route exact path="/" component={ Home } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
