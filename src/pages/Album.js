@@ -73,12 +73,12 @@ export default class Album extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-album">
+      <div>
         <Header />
         { loading ? <Loading /> : (
           <main>
-            <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
-            <h3 data-testid="artist-name">{ albumInfo.artistName }</h3>
+            <h2>{ albumInfo.collectionName }</h2>
+            <h3>{ albumInfo.artistName }</h3>
             { songsList.map((song) => (
               <MusicCard
                 key={ song.trackId }

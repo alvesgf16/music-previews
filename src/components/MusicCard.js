@@ -33,7 +33,7 @@ export default class MusicCard extends Component {
     return (
       <div>
         <span>{ trackName }</span>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
+        <audio src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento
           <code>audio</code>
@@ -46,7 +46,6 @@ export default class MusicCard extends Component {
             type="checkbox"
             checked={ isFavorite }
             id={ `checkbox-music-${trackId}` }
-            data-testid={ `checkbox-music-${trackId}` }
             onChange={ onInputChange }
           />
         </label>

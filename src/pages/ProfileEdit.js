@@ -62,42 +62,37 @@ export default class ProfileEdit extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-profile-edit">
+      <div>
         <Header />
         { (() => (loading ? <Loading /> : (
           <main>
-            <img src={ image } data-testid="profile-image" alt="Imagem do perfil" />
+            <img src={ image } alt="Imagem do perfil" />
             <input
               name="image"
               value={ image }
               type="text"
-              data-testid="edit-input-image"
               onChange={ this.onInputChange }
             />
             <input
               name="name"
               value={ name }
               type="text"
-              data-testid="edit-input-name"
               onChange={ this.onInputChange }
             />
             <input
               name="email"
               value={ email }
               type="email"
-              data-testid="edit-input-email"
               onChange={ this.onInputChange }
             />
             <input
               name="description"
               value={ description }
               type="text"
-              data-testid="edit-input-description"
               onChange={ this.onInputChange }
             />
             <button
               type="button"
-              data-testid="edit-button-save"
               disabled={ isSaveButtonDisabled }
               onClick={ this.onSaveButtonClick }
             >

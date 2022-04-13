@@ -46,18 +46,16 @@ export default class Login extends Component {
     } = this.state;
 
     return (loading ? <Loading /> : (
-      <div data-testid="page-login">
+      <div>
         <form>
           <input
             name="login"
             value={ login }
             type="text"
-            data-testid="login-name-input"
             onChange={ this.onInputChange }
           />
           <button
             type="button"
-            data-testid="login-submit-button"
             disabled={ isSaveButtonDisabled }
             onClick={ this.onSaveButtonClick }
           >

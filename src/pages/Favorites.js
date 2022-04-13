@@ -54,7 +54,7 @@ export default class Favorites extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-favorites">
+      <div>
         <Header />
         { loading ? <Loading /> : (
           favoriteSongs.map((song) => (

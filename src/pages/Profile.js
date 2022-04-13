@@ -39,11 +39,11 @@ export default class Profile extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-profile">
+      <div>
         <Header />
         { (() => (loading ? <Loading /> : (
           <main>
-            <img src={ image } data-testid="profile-image" alt="Imagem do perfil" />
+            <img src={ image } alt="Imagem do perfil" />
             <button
               type="button"
               onClick={ this.onEditButtonClick }

@@ -60,7 +60,7 @@ export default class Search extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-search">
+      <div>
         <Header />
         { loading ? <Loading /> : (
           <div>
@@ -68,12 +68,10 @@ export default class Search extends Component {
               namue="input"
               value={ input }
               type="text"
-              data-testid="search-artist-input"
               onChange={ this.onInputChange }
             />
             <button
               type="button"
-              data-testid="search-artist-button"
               disabled={ isSearchButtonDisabled }
               onClick={ this.onSearchButtonClick }
             >

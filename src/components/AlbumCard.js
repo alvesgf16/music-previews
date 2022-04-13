@@ -12,10 +12,7 @@ export default class AlbumCard extends Component {
     } } = this.props;
     return (
       <div>
-        <Link
-          to={ `/album/${collectionId}` }
-          data-testid={ `link-to-album-${collectionId}` }
-        >
+        <Link to={ `/album/${collectionId}` }>
           <img src={ artworkUrl100 } alt={ `${collectionName} cover` } />
           <h4>{ collectionName }</h4>
           <p>{ artistName }</p>
