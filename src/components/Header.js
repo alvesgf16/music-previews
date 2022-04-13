@@ -39,7 +39,7 @@ export default class Header extends Component {
           </section>
           <section className="user-container">
             <img
-              className="header-profile-image"
+              className="profile-image"
               src={ image || defaultUserImage }
               alt="User"
             />
