@@ -41,17 +41,17 @@ header {
   padding: 20px 60px;
 }
 
-.logo-title {
+header .logo-title {
   display: flex;
   align-items: center;
 }
 
-.header-profile-image {
+header .profile-image {
   height: 32px;
   border-radius: 100%;
 }
 
-.user-container {
+header .user-container {
   display: flex;
   align-items: center;
   border-radius: 20px;
@@ -59,7 +59,7 @@ header {
   color: var(--cinza3);
 }
 
-.user-container p {
+header .user-container p {
   width: 150px;
   text-align: center;
 }
@@ -94,4 +94,47 @@ nav > :nth-child(n):hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+}
+
+.steps .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.steps .step h2 {
+  margin-bottom: 30px;
+}
+
+.genre-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.genre-cards .genre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.1s;
+  margin: 15px;
+  padding: 20px;
+  background-color: var(--cinza2);
+  cursor: pointer;
+}
+
+.genre-cards .genre:hover {
+  background-color: var(--cinza1);
+}
+
+.genre-cards .genre img {
+  margin-bottom: 20px;
+  width: 160px;
+
 }

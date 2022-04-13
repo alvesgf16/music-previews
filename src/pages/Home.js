@@ -13,7 +13,25 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <main>
+          <section className="steps">
+            <section className="step genre">
+              <h2>1. Escolha o gênero</h2>
+              <section className="genre-cards"></section>
+            </section>
+            <section className="step playlist">
+              <h2>2. Escolha a playlist</h2>
+              <section className="playlist-cards"></section>
+            </section>
+            <section className="step track">
+              <h2>3. Escolha a música</h2>
+              <section className="track-cards"></section>
+            </section>
+          </section>
+        </main>
+      </div>
     );
   }
 }
